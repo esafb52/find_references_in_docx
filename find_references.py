@@ -33,9 +33,14 @@ def find_references(path):
     return ls_txt_data
 
 
-if __name__ == '__main__':
+def main():
     docx_file_path = 'g:/qq.docx'
     result_file_path = 'g:/final_reference.txt'
     lst_ref = find_references(docx_file_path)
     save_references_file(result_file_path, lst_ref)
     print('find references complete  !!!!!!')
+    
+
+if __name__ == '__main__':
+    main()
+   
