@@ -22,9 +22,8 @@ def find_references(path):
                 temp_txt = temp_txt + char
             if char == ')':
                 mode = False
-                if 8 < len(temp_txt) < 100:
-                    ls_txt_data.append(temp_txt.strip())
-                    # print(temp_txt[1:-1])
+                if 8 < len(temp_txt) < 100 and has_numbers(temp_txt):
+                    ls_txt_data.append(temp_txt.strip()[1:-1])
                 temp_txt = ''
     ls = list(set(ls_txt_data))
     ls.sort()
@@ -33,9 +32,13 @@ def find_references(path):
     return ls
 
 
+def has_numbers(input_str):
+    return any(char.isdigit() for char in input_str)
+    
+
 if __name__ == '__main__':
-    docx_file_path = 'd:/esa_doc.docx'
-    result_file_path = 'd:/final_reference_esa22.txt'
+    docx_file_path = 'g:/qq.docx'
+    result_file_path = 'g:/final_reference.txt'
     lst_ref = find_references(docx_file_path)
     save_references_file(result_file_path, lst_ref)
     print('find references complete  !!!!!!')
